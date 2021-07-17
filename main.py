@@ -8,8 +8,8 @@ print("Imported Module")
 sleep(2)
 
 
-my_token = '1871693294:AAHHNtaBPyfi6mMTqy_nB80tzsCzCbLRnPs'
-chat_id = "-1001523964055"
+my_token = " "
+chat_id = " "
 print("bot token")
 
 today = datetime.today()
