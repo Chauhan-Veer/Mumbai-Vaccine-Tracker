@@ -3,14 +3,13 @@ from datetime import datetime, time, timedelta
 from time import sleep
 
 import telegram
-print("Imported Module")
 
-sleep(2)
+
 
 
 my_token = " "
 chat_id = " "
-print("bot token")
+
 
 today = datetime.today()
 
@@ -19,7 +18,7 @@ num_days = 7
 
 global district
 district = ['395']
-print("District")
+
 
 all_dates = []
 
@@ -41,18 +40,18 @@ def main():
                 result = requests.get(url)
 
             json_result = result.json()
-            # print(json_result)
+            
 
             if json_result['centers']:
                 for center in json_result["centers"]:
                     for sessions in center["sessions"]:
                         for ForeNoon in sessions['slots']:
 
-                            print("bot = token=my_Token")
+                            
                             bot = telegram.Bot(token=my_token)
 
 
-                            print("Data")
+                            
                             print("\n")
                             pins = "Pincode:  " + str(center["pincode"])
                             diss = "District:  " + "Mumbai"
@@ -66,7 +65,7 @@ def main():
                             vacc_type = "Vaccine Type:  " + str(sessions["vaccine"])
 
                             link = "Resgiter Here 👇 \n https://selfregistration.cowin.gov.in/"
-                            # print("Vaccine slot: " + int(ForeNoon["FORENOON"]))
+                            
 
                             main_message = f"{pins}\n\n{diss}\n\n{Date}\n\n{center_name}\n\n{center_address}\n\n{no_of_vacc}\n\n{age}\n\n{Dose_1}\n\n{Dose_2}\n\n{vacc_type}\n\n\n{link}\n"
                             sleep(120)
