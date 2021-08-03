@@ -14,9 +14,10 @@ chat_id = " "
 today = datetime.today()
 
 
-num_days = 7
+num_days = 1
 
 global district
+#Mumbai District Number 
 district = ['395']
 
 
@@ -45,10 +46,16 @@ def main():
             if json_result['centers']:
                 for center in json_result["centers"]:
                     for sessions in center["sessions"]:
-                        for ForeNoon in sessions['slots']:
+                        
 
                             
-                            bot = telegram.Bot(token=my_token)
+                            # bot = telegram.Bot(token=my_token)
+
+                            if int(sessions['available_capacity']) != 0:
+                                global no_of_vacc
+                                no_of_vacc = str(sessions['available_capacity'])
+
+                            
 
 
                             
@@ -63,16 +70,17 @@ def main():
                             Dose_1 = "Dose 1:  " + str(sessions['available_capacity_dose1'])
                             Dose_2 = "Dose 2:  " + str(sessions['available_capacity_dose2'])
                             vacc_type = "Vaccine Type:  " + str(sessions["vaccine"])
-
-                            link = "Resgiter Here 👇 \n https://selfregistration.cowin.gov.in/"
+                            fee = f"Vaccine Fee: {str(center['fee_type'])}"
                             
 
-                            main_message = f"{pins}\n\n{diss}\n\n{Date}\n\n{center_name}\n\n{center_address}\n\n{no_of_vacc}\n\n{age}\n\n{Dose_1}\n\n{Dose_2}\n\n{vacc_type}\n\n\n{link}\n"
-                            sleep(120)
-                            bot.sendMessage(chat_id=chat_id, text=main_message)
+                            link = "Resgiter Here 👇 \nhttps://selfregistration.cowin.gov.in/"
+                            
+
+                            main_message = f"{pins}\n\n{diss}\n\n{Date}\n\n{center_name}\n\n{center_address}\n\n{no_of_vacc}\n\n{age}\n\n{Dose_1}\n\n{Dose_2}\n\n{vacc_type}\n\n{fee}\n\n\n{link}\n"
+                            print(main_message)# sleep(60)
+                            # bot.sendMessage(chat_id=chat_id, text=main_message)
                             
                         
 
-while True:
+if __name__ == '__main__':
     main()
-    print("Message Send")
