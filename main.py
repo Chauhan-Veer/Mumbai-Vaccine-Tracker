@@ -77,8 +77,8 @@ def main():
                             
 
                             main_message = f"{pins}\n\n{diss}\n\n{Date}\n\n{center_name}\n\n{center_address}\n\n{no_of_vacc}\n\n{age}\n\n{Dose_1}\n\n{Dose_2}\n\n{vacc_type}\n\n{fee}\n\n\n{link}\n"
-                            print(main_message)# sleep(60)
-                            # bot.sendMessage(chat_id=chat_id, text=main_message)
+                            sleep(60)
+                            bot.sendMessage(chat_id=chat_id, text=main_message)
                             
                         
 
